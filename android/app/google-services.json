@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "596006782913",
+    "project_id": "socialko-3c2c8",
+    "storage_bucket": "socialko-3c2c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596006782913:android:019683204d3dfab3aa5140",
+        "android_client_info": {
+          "package_name": "com.example.socialko"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBC51y37N-tL5f-jnSjWRgHr4uHOS1flr8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
