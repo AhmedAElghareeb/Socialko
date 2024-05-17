@@ -1,9 +1,12 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kiwi/kiwi.dart';
 import 'package:socialko/auth/login/bloc.dart';
+import 'package:socialko/auth/register/view.dart';
+import 'package:socialko/utils/helper.dart';
 import 'package:socialko/utils/widgets.dart';
 
 class LoginView extends StatefulWidget {
@@ -14,7 +17,6 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final email = TextEditingController();
   final bloc = KiwiContainer().resolve<LoginBloc>();
 
   final event = StartLoginEvent();
@@ -89,6 +91,36 @@ class _LoginViewState extends State<LoginView> {
                       );
                     },
                   ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional.center,
+                    child: Text.rich(
+                      TextSpan(
+                          text: "Don't Have an Account? ",
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          children: [
+                            TextSpan(
+                              text: "Register",
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  pushAndRemoveUntil(
+                                    const RegisterView(),
+                                  );
+                                },
+                              style: TextStyle(
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w500,
+                                color: Theme.of(context).primaryColor,
+                              ),
+                            )
+                          ]),
+                    ),
+                  )
                 ],
               ),
             ),

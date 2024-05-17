@@ -26,7 +26,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterStates> {
         .createUserWithEmailAndPassword(
       email: email.text,
       password: password.text,
-    ).then((value) {
+    ).then((value) async {
 
       UserModel model = UserModel(
         name: name.text,
@@ -35,7 +35,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterStates> {
         uId: value.user!.uid,
       );
 
-      FirebaseFirestore.instance
+      await FirebaseFirestore.instance
           .collection("users")
           .doc(value.user!.uid)
           .set(model.toMap())
