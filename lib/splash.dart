@@ -1,9 +1,9 @@
 import 'dart:async';
-
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:socialko/auth/base/home/view.dart';
 import 'package:socialko/auth/login/view.dart';
 import 'package:socialko/utils/helper.dart';
 
@@ -23,9 +23,16 @@ class _SplashViewState extends State<SplashView> {
         seconds: 3,
       ),
       () {
-        pushAndRemoveUntil(
-          const LoginView(),
-        );
+        if(CacheHelper.getData(key: "uId").isNotEmpty) {
+          pushAndRemoveUntil(
+            const HomeView(),
+          );
+        } else
+        {
+          pushAndRemoveUntil(
+            const LoginView(),
+          );
+        }
       },
     );
   }

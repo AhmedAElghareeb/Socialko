@@ -21,6 +21,8 @@ void main() async {
 
   serviceLocator();
 
+  CacheHelper.init();
+
   Bloc.observer = AppBlocObserver();
 
   await ScreenUtil.ensureScreenSize();

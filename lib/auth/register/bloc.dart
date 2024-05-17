@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:socialko/auth/login/view.dart';
+import 'package:socialko/utils/helper.dart';
 
 part 'model.dart';
 
@@ -26,14 +28,15 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterStates> {
         .createUserWithEmailAndPassword(
       email: email.text,
       password: password.text,
-    ).then((value) async {
-
+    )
+        .then((value) async {
       UserModel model = UserModel(
         name: name.text,
         email: email.text,
         phone: phone.text,
         uId: value.user!.uid,
       );
+      CacheHelper.saveData(key: "uId", value: value.user!.uid);
 
       await FirebaseFirestore.instance
           .collection("users")
@@ -41,6 +44,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterStates> {
           .set(model.toMap())
           .then((value) {
         emit(CreateSuccessState());
+        pushAndRemoveUntil(const LoginView());
       }).catchError((err) {
         emit(CreateFailedState(err.toString()));
       });
