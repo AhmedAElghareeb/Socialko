@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -29,15 +30,14 @@ class _InputFieldState extends State<InputField> {
       onTapOutside: (ev) {
         FocusManager.instance.primaryFocus?.unfocus();
       },
-      validator: (value)
-      {
-        if(value!.isEmpty)
-        {
+      validator: (value) {
+        if (value!.isEmpty) {
           return "Field is Required";
         }
         return null;
       },
-      obscureText: widget.keyboardType == TextInputType.visiblePassword && isPassword,
+      obscureText:
+          widget.keyboardType == TextInputType.visiblePassword && isPassword,
       keyboardType: widget.keyboardType,
       decoration: InputDecoration(
         border: OutlineInputBorder(
@@ -81,7 +81,9 @@ class AppButton extends StatefulWidget {
     super.key,
     required this.text,
     required this.onPressed,
-    this.isLoading = false, required this.width, required this.height,
+    this.isLoading = false,
+    required this.width,
+    required this.height,
   });
 
   final bool isLoading;
@@ -118,3 +120,10 @@ class _AppButtonState extends State<AppButton> {
           );
   }
 }
+
+Widget cacheImage(String? imageUrl, BoxFit? fit) => CachedNetworkImage(
+      imageUrl: imageUrl!,
+      fit: fit!,
+      errorWidget: (context, url, error) => const Icon(Icons.error_outline),
+      placeholder: (context, url) => const CircularProgressIndicator(),
+    );

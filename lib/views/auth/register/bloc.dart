@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:socialko/auth/login/view.dart';
+import 'package:socialko/views/auth/login/view.dart';
 import 'package:socialko/utils/helper.dart';
 
 part 'model.dart';

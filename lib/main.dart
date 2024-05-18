@@ -52,10 +52,17 @@ class Socialko extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         navigatorKey: navigatorKey,
         theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
-          platform: TargetPlatform.iOS,
-          useMaterial3: false,
-        ),
+            scaffoldBackgroundColor: Colors.white,
+            platform: TargetPlatform.iOS,
+            useMaterial3: false,
+            appBarTheme: AppBarTheme(
+                titleTextStyle: TextStyle(
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+                elevation: 0,
+                backgroundColor: Colors.white)),
         home: const SplashView(),
       ),
     );

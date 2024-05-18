@@ -4,22 +4,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kiwi/kiwi.dart';
-import 'package:socialko/auth/login/view.dart';
-import 'package:socialko/auth/register/bloc.dart';
+import 'package:socialko/views/auth/login/bloc.dart';
+import 'package:socialko/views/auth/register/view.dart';
 import 'package:socialko/utils/helper.dart';
 import 'package:socialko/utils/widgets.dart';
 
-class RegisterView extends StatefulWidget {
-  const RegisterView({super.key});
+class LoginView extends StatefulWidget {
+  const LoginView({super.key});
 
   @override
-  State<RegisterView> createState() => _RegisterViewState();
+  State<LoginView> createState() => _LoginViewState();
 }
 
-class _RegisterViewState extends State<RegisterView> {
-  final bloc = KiwiContainer().resolve<RegisterBloc>();
+class _LoginViewState extends State<LoginView> {
+  final bloc = KiwiContainer().resolve<LoginBloc>();
 
-  final event = StartRegisterEvent();
+  final event = StartLoginEvent();
 
   final formKey = GlobalKey<FormState>();
 
@@ -46,18 +46,9 @@ class _RegisterViewState extends State<RegisterView> {
                     height: 50,
                   ),
                   InputField(
-                    controller: bloc.name,
-                    label: "Name",
-                    icon: Icons.person,
-                    keyboardType: TextInputType.name,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  InputField(
                     controller: bloc.email,
                     label: "Email",
-                    icon: Icons.email_outlined,
+                    icon: Icons.mail_outline_outlined,
                     keyboardType: TextInputType.emailAddress,
                   ),
                   const SizedBox(
@@ -67,15 +58,6 @@ class _RegisterViewState extends State<RegisterView> {
                     controller: bloc.password,
                     label: "Password",
                     keyboardType: TextInputType.visiblePassword,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  InputField(
-                    controller: bloc.phone,
-                    label: "Phone",
-                    icon: Icons.call,
-                    keyboardType: TextInputType.phone,
                   ),
                   const SizedBox(
                     height: 50,
@@ -96,7 +78,7 @@ class _RegisterViewState extends State<RegisterView> {
                     builder: (context, state) {
                       return AppButton(
                         isLoading: state is LoadingState,
-                        text: "Register",
+                        text: "Login",
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
                             bloc.add(
@@ -116,18 +98,18 @@ class _RegisterViewState extends State<RegisterView> {
                     alignment: AlignmentDirectional.center,
                     child: Text.rich(
                       TextSpan(
-                          text: "Have an Account? ",
+                          text: "Don't Have an Account? ",
                           style: TextStyle(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w500,
                           ),
                           children: [
                             TextSpan(
-                              text: "Login",
+                              text: "Register",
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
                                   pushAndRemoveUntil(
-                                    const LoginView(),
+                                    const RegisterView(),
                                   );
                                 },
                               style: TextStyle(

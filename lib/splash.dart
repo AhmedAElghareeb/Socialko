@@ -3,9 +3,9 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:socialko/auth/base/home/view.dart';
-import 'package:socialko/auth/login/view.dart';
+import 'package:socialko/views/auth/login/view.dart';
 import 'package:socialko/utils/helper.dart';
+import 'package:socialko/views/base/home_nav.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -25,7 +25,7 @@ class _SplashViewState extends State<SplashView> {
       () {
         if(CacheHelper.getData(key: "uId").isNotEmpty) {
           pushAndRemoveUntil(
-            const HomeView(),
+            const HomeNavView(),
           );
         } else
         {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:socialko/auth/base/home/view.dart';
 import 'package:socialko/utils/helper.dart';
+import 'package:socialko/views/base/home_nav.dart';
 
 part 'event.dart';
 
@@ -26,7 +26,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginStates> {
     ).then((value) {
       CacheHelper.saveData(key: "uId", value: value.user!.uid);
       emit(SuccessState(value.user!.uid));
-      pushAndRemoveUntil(const HomeView());
+      pushAndRemoveUntil(const HomeNavView());
     }).catchError((err) {
       emit(FailedState(err.toString()));
     });
