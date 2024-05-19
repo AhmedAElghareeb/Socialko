@@ -45,6 +45,7 @@ class _HomeNavViewState extends State<HomeNavView> {
           (index) => BottomNavigationBarItem(
               icon: Icon(icons[index]), label: titles[index]),
         ),
+        backgroundColor: Colors.white,
         currentIndex: current,
         onTap: (value) {
           current = value;

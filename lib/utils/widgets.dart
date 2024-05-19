@@ -125,5 +125,5 @@ Widget cacheImage(String? imageUrl, BoxFit? fit) => CachedNetworkImage(
       imageUrl: imageUrl!,
       fit: fit!,
       errorWidget: (context, url, error) => const Icon(Icons.error_outline),
-      placeholder: (context, url) => const CircularProgressIndicator(),
+      placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
     );
