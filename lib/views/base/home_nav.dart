@@ -38,6 +38,23 @@ class _HomeNavViewState extends State<HomeNavView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(titles[current]),
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.search_outlined,
+                color: Colors.black,
+              )),
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.notifications_active_outlined,
+                color: Colors.black,
+              )),
+        ],
+      ),
       body: pages[current],
       bottomNavigationBar: BottomNavigationBar(
         items: List.generate(

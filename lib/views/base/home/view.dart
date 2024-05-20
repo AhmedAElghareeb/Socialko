@@ -7,65 +7,22 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Home Feeds"),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.search_outlined,
-                color: Colors.black,
-              )),
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.notifications_active_outlined,
-                color: Colors.black,
-              )),
-        ],
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Card(
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                elevation: 5,
-                margin: EdgeInsetsDirectional.all(8.r),
-                child: Stack(
-                  alignment: AlignmentDirectional.bottomEnd,
-                  children: [
-                    cacheImage(
-                      "https://img.freepik.com/free-photo/social-media-concept-composition_23-2150169145.jpg?t=st=1716042147~exp=1716045747~hmac=49083b17b93d079c2354a085925d1ee429c0c3515f8fd92126a936685eaee8aa&w=900",
-                      BoxFit.cover,
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.all(10.r),
-                      child: Text(
-                        "Communicate with Friends",
-                        style: TextStyle(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              ListView.separated(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) => buildPostItem(context),
-                separatorBuilder: (context, index) => const SizedBox(height: 20,),
-                itemCount: 5,
-              ),
-              const SizedBox(
-                height: 200,
-              ),
-            ],
-          ),
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            buildTopHome(),
+            ListView.separated(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) => buildPostItem(context),
+              separatorBuilder: (context, index) => const SizedBox(height: 20,),
+              itemCount: 5,
+            ),
+            SizedBox(
+              height: 20.h,
+            ),
+          ],
         ),
       ),
     );
@@ -329,4 +286,29 @@ class HomeView extends StatelessWidget {
           ),
         ),
       );
+  Widget buildTopHome() => Card(
+    clipBehavior: Clip.antiAliasWithSaveLayer,
+    elevation: 5,
+    margin: EdgeInsetsDirectional.all(8.r),
+    child: Stack(
+      alignment: AlignmentDirectional.bottomEnd,
+      children: [
+        cacheImage(
+          "https://img.freepik.com/free-photo/social-media-concept-composition_23-2150169145.jpg?t=st=1716042147~exp=1716045747~hmac=49083b17b93d079c2354a085925d1ee429c0c3515f8fd92126a936685eaee8aa&w=900",
+          BoxFit.cover,
+        ),
+        Padding(
+          padding: EdgeInsetsDirectional.all(10.r),
+          child: Text(
+            "Communicate with Friends",
+            style: TextStyle(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w500,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
 }

@@ -1,23 +1,32 @@
 part of 'bloc.dart';
 
 class UserModel {
-  late final String name;
-  late final String email;
-  late final String phone;
-  late final String uId;
+  String? name;
+  String? image;
+  String? cover;
+  String? bio;
+  String? email;
+  String? phone;
+  String? uId;
 
   UserModel({
     required this.name,
     required this.email,
     required this.phone,
     required this.uId,
+    required this.image,
+    required this.cover,
+    required this.bio
   });
 
   UserModel.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    email = json['email'];
-    phone = json['phone'];
-    uId = json['uId'];
+    name = json['name'] ?? "";
+    email = json['email'] ?? "";
+    phone = json['phone'] ?? "";
+    uId = json['uId'] ?? "";
+    image = json['image'] ?? "";
+    cover = json['cover'] ?? "";
+    bio = json['bio'] ?? "";
   }
 
   Map<String, dynamic> toMap() {
@@ -25,7 +34,10 @@ class UserModel {
       'name': name,
       'email': email,
       'phone': phone,
-      "uId": uId,
+      'uId': uId,
+      'image': image,
+      'cover': cover,
+      'bio': bio,
     };
   }
 }
