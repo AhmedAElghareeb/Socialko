@@ -26,7 +26,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginStates> {
     ).then((value) {
       CacheHelper.saveData(key: "uId", value: value.user!.uid);
       emit(SuccessState(value.user!.uid));
-      pushAndRemoveUntil(const ChatsView(), arguments: email);
+      pushAndRemoveUntil(const ChatsView(), arguments: email.text);
     }).catchError((err) {
       emit(FailedState(err.toString()));
     });
