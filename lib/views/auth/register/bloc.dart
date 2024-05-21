@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:socialko/views/auth/login/view.dart';
 import 'package:socialko/utils/helper.dart';
+import 'package:socialko/views/base/chats/view.dart';
 
 part 'model.dart';
 
@@ -47,7 +47,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterStates> {
           .set(model.toMap())
           .then((value) {
         emit(CreateSuccessState());
-        pushAndRemoveUntil(const LoginView());
+        pushAndRemoveUntil(const ChatsView());
       }).catchError((err) {
         emit(CreateFailedState(err.toString()));
       });

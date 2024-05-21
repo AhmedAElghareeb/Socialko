@@ -9,14 +9,15 @@ class InputField extends StatefulWidget {
     this.controller,
     this.icon,
     this.keyboardType,
+    this.onSuffixPressed,
   });
 
   final String? label;
   final TextEditingController? controller;
   final IconData? icon;
   final TextInputType? keyboardType;
+  final void Function()? onSuffixPressed;
 
-// final VoidCallback? onPressed,
 
   @override
   State<InputField> createState() => _InputFieldState();
@@ -68,7 +69,7 @@ class _InputFieldState extends State<InputField> {
                       : Icons.visibility_outlined,
                 ),
               )
-            : Icon(widget.icon),
+            : IconButton(onPressed: widget.onSuffixPressed, icon: Icon(widget.icon)),
       ),
     );
   }

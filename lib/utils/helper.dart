@@ -3,10 +3,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
-pushAndRemoveUntil(Widget page) {
+pushAndRemoveUntil(Widget page, {Object? arguments}) {
   return Navigator.of(navigatorKey.currentContext!).pushAndRemoveUntil(
     MaterialPageRoute(
       builder: (context) => page,
+      settings: RouteSettings(
+        arguments: arguments,
+      )
     ),
     (route) => false,
   );
