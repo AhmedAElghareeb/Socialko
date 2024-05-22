@@ -47,7 +47,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterStates> {
           .set(model.toMap())
           .then((value) {
         emit(CreateSuccessState());
-        pushAndRemoveUntil(const ChatsView());
+        pushAndRemoveUntil(const ChatsView(), arguments: email.text);
       }).catchError((err) {
         emit(CreateFailedState(err.toString()));
       });
